@@ -1,0 +1,6 @@
+.registerContainer{
+    align-items: flex-start;
+    border: #333 solid 1px;
+    display: flex;
+    flex-direction: column;
+}
