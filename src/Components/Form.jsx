@@ -12,6 +12,9 @@ const Form = () => {
         equipo: ""
     })
 
+    // Estado para la lista de usuarios
+    const [listUsers, setListUsers] = useState([])
+
     // Estados para exito y error y mostrar o no el resultado
     const [show, setShow] = useState(false)
     const [error, setError] = useState(false)
@@ -35,8 +38,15 @@ const Form = () => {
             user.edad.trim().length < 3 &&
             user.equipo.trim().length > 3
         ){
+            setListUsers([...listUsers, user])
             setShow(true)
             setError(false)
+            // Limpiar los campos de entrada
+            setUser({
+                nombre: "",
+                edad: "",
+                equipo: ""
+            })
         } else {
             setError(true)
         }
@@ -55,7 +65,8 @@ const Form = () => {
             <input type="text" value={user.equipo} onChange={handleTeam} /> 
             <button>Registro</button>
         </form>
-        {show && <Registro usuario={user} />}
+        <h2>Registro</h2>
+        {show && <Registro usuarios={listUsers} />}
         {error && (
         <p style={{ color: "red" }}>
           Debe colocar la información correctamente

@@ -3,4 +3,5 @@
     border: #333 solid 1px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
